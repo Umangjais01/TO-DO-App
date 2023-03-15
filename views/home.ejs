@@ -1,0 +1,128 @@
+
+<!-- 
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TODO List</title>
+  
+  <script src="https://kit.fontawesome.com/f9645382a5.js" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+  <h1>TODO List</h1>
+
+  <form id="new-add-form" action="/add" method="post">
+    <b>Description:</b> 
+    <input type="text" name="plan" placeholder="Enter a new todo list" required>
+    
+    <select id="select" name="category">
+      <option value="Personal">Personal</option>
+      <option value="Projects">Projects</option>
+      <option value="Vacation">Vacation</option>
+      <option value="House Work">House Work</option>
+      <option value="Others">Others</option>
+    </select>
+
+    <input type="date" id="date" name="date" required>
+
+    <button type="submit">Add</button>
+  </form>
+
+  <form id="delete-form" action="/delete-plans" method="post">
+    <div id="todo-list-container">
+      <ul>
+        <% for(let card of todo_list) { %>
+        <li class="todo">
+          <div class="details"> 
+            <p><%= card.plan %></p>
+            <p><%= card.date %></p>
+            <p><%= card.category %></p>
+          </div>
+          <div class="delete-button">
+            <input type="checkbox" name="ids[]" value="<%= card._id %>">
+          </div>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+
+    <button type="submit">Delete Selected Plans</button>
+  </form>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TODO List</title>
+  
+  <script src="https://kit.fontawesome.com/f9645382a5.js" crossorigin="anonymous"></script>
+  
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1>TODO List</h1>
+
+    <form id="new-add-form" action="/add" method="post" class="form-inline">
+      <div class="form-group">
+        <label class="mr-2">Description:</label> 
+        <input type="text" name="plan" placeholder="Enter a new todo list" required class="form-control mr-2">
+      </div>
+
+      <div class="form-group">
+        <label class="mr-2">Category:</label>
+        <select id="select" name="category" class="form-control mr-2">
+          <option value="Personal">Personal</option>
+          <option value="Projects">Projects</option>
+          <option value="Vacation">Vacation</option>
+          <option value="House Work">House Work</option>
+          <option value="Others">Others</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="mr-2">Date:</label>
+        <input type="date" id="date" name="date" required class="form-control mr-2">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+
+    <form id="delete-form" action="/delete-plans" method="post" class="mt-4">
+      <div id="todo-list-container">
+        <ul class="list-group">
+          <% for(let card of todo_list) { %>
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between align-items-center"> 
+              <div>
+                <p><%= card.plan %></p>
+                <small><%= card.date %></small>
+              </div>
+              <div>
+                <span><%= card.category %></span>
+                <input type="checkbox" name="ids[]" value="<%= card._id %>">
+              </div>
+            </div>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+
+      <button type="submit" class="btn btn-danger mt-4">Delete Selected Plans</button>
+    </form>
+  </div>
+
+  <!-- Add Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
